@@ -118,29 +118,27 @@ body {
     padding: 0px;
 }
 
-.btn-circle-darkgreen{
-    height: 35px;
-    width: 35px;
-    border-radius: 100%;
+.btn-circle-green:hover{
     background-color: darkslategray;
-    border-color: darkslategray;
-    margin: 5px;
-    padding: 0px;
 }
 
-.btn-rect-darkgreen{
+.btn-rect-green{
     height: 35px;
     width: 140px;
     border-radius: 0%;
-    background-color: darkslategray;
-    border-color: darkslategray;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
     margin: 5px;
+}
+
+.btn-rect-green:hover{
+    background-color: darkslategray;
 }
 
 .glyphicon-white{
     color: white;
     font-size: 15px;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
 .glyphicon-float-right{
@@ -235,15 +233,6 @@ body {
     padding: 8px 12px;
     position: absolute;
     top: 0;
-}
-
-.demo {
-    opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-    opacity: 1;
 }
 
 img.hover-shadow {
