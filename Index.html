@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Custom CSS and JS -->
+    <script src="JS/siteJs.js"></script>
+    <link rel="stylesheet" href="./css/site.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25">
+    <title>Wapi FrondEnd</title>
+</head>
+<body>
+<nav id="myNav" class="navbar navbar-inverse navbar-fixed-top nav-blue">
+    <div class="container">
+        <a href="#" class="navbar-left"><img src="Content/images/logo-carlsberg-white.png"></a>
+        <div class="vl">
+            <h5 class="carlsberg-bold-white">POS</h5>
+            <h5 class="carlsberg-bold-white">Glassware</h5>
+        </div>
+    </div>
+</nav>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="row">
+                <img id="myimage"
+                     src="Content/images/main_image250x440.jpg"
+                     onclick="openModal();currentSlide(1)"
+                     onmouseover="initializeImageZoom();"
+                     onmouseleave="endImageZoom()"
+                     class="col-md-offset-6 img-responsive hover-shadow cursor">
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Content/images/main_image250x250.jpg" onclick="openModal();currentSlide(1)" class="img-responsive smallBorderedImg hover-shadow cursor">
+                </div>
+                <div class="col-md-6">
+                    <img src="Content/images/second_image250x250.jpg" onclick="openModal();currentSlide(2)" class="img-responsive smallBorderedImg hover-shadow cursor">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5 text-left">
+            <!-- Image zoom window -->
+            <div id="toBeShownForMagnify" class="img-zoom-container" style="display: none">
+                <div id="myresult" class="img-zoom-result"></div>
+            </div>
+            <div id="toBeHiddenForMagnify" >
+                <div class="row">
+                    <h3 class="carlsberg-bold-dakgreen-larger"><strong>SHUMENSKO GLASS 6X0,25 6X0,25</strong></h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <small class="carlsberg-sans-light">Product Code: 0001</small>
+                        </div>
+                        <div class="row">
+                            <small class="carlsberg-sans-light">SKU: 12345</small>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label class="carlsberg-sans-light" for="qty">QTY</label>
+                                    <input class="form-control" onchange="updateQty()" style="width: 35%" id="qty" type="text"> <small>PAL</small>
+                                </div>
+                            </form>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <small class="carlsberg-sans-light-green">Sales unit: PAL (576 pieces)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h4 class="carlsberg-sans-light" style="padding-top: 60px">= <strong><span id="qtyInput" >0</span></strong> <small>TOTAL UNITS</small></h4>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h4><span class="carlsberg-sans-light">Unit Price</span> <strong class="font-awesome-larger-garkgreen">2,60 &euro;</strong></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h4><span class="carlsberg-sans-light">Total Price</span> <strong class="font-awesome-larger-garkgreen"><span id="totalPrice">0,00</span> &euro;</strong></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr class="hr-darkgray">
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h5 class="carlsberg-sans-light">LOCAL MATERIAL NUMBER</h5>
+                        </div>
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input class="form-control" id="lmn" type="text">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row" style="margin-top: 10px; margin-right: 20px">
+                            <small>Plase specify your local material number here. WARNING: last SKU entered will replace previous SKU registered for all users of your company</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h5 class="carlsberg-sans-light">LOCAL PROUCT NAME</h5>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input class="form-control" id="lpn" type="text">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row" style="margin-top: 10px; margin-right: 30px"; >
+                            <small>Please specify your local product name in your language, if necessary</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px">
+                    <button type="button" class="btn btn-rect-darkgreen btn-float-right">
+                        <span class="carlsberg-sans-light-white float-left">
+                            Add to cart
+                        </span>
+                        <span class="glyphicon glyphicon-shopping-cart glyphicon-white glyphicon-float-right"></span>
+                    </button>
+                </div>
+                <div class="row">
+                    <hr class="hr-darkgray">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <button type="button" class="btn btn-circle-green">
+                                <span class="glyphicon glyphicon-star-empty glyphicon-white"></span>
+                            </button><small class="carlsberg-sans-light-green">Add to Wishlist</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <button type="button" class="btn btn-circle-green">
+                                <span class="glyphicon glyphicon-envelope glyphicon-white"></span>
+                            </button><small class="carlsberg-sans-light-green">Email to a colleague</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <button type="button" class="btn btn-circle-darkgreen">
+                                <span class="carlsberg-bold-white">?</span>
+                            </button><small>Ask a question</small>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <br>
+     <!-- Tab links -->
+     <div class="tab">
+         <button class="tablinks" onclick="openTab(event, 'Specifications')" id="defaultOpen"><strong>Specifiations</strong></button>
+         <button class="tablinks" onclick="openTab(event, 'Rating')"><strong>Rating and comments</strong></button>
+     </div>
+     <!-- Tab content -->
+     <div id="Specifications" class="tabcontent">
+         <div class="row">
+         <div class="col-md-6">
+             <br>
+             <h4><strong>Product specifications</strong></h4>
+             <br>
+             <h6><strong>Product code:</strong> 0001</h6>
+             <h6><strong>Product name:</strong> Shumensko glass 6x0,25</h6>
+             <h6><strong>Pcs per Ordering Unit:</strong> 576</h6>
+             <h6><strong>Ordering unit:</strong> PAL</h6>
+         </div>
+         <div class="col-md-6" style="padding-left: 100px">
+             <br>
+             <h4><strong>Customs data</strong></h4>
+             <br>
+             <h6><strong>Country of origin:</strong> Bulgaria</h6>
+             <h6><strong>HS Code:</strong> 12345</h6>
+         </div>
+         </div>
+     </div>
+    <div id="Rating" class="tabcontent">
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <h5><strong>Functionality</strong> <span class="glyphicon glyphicon-question-sign"></span></h5>
+                <br>
+                <h5><strong>Impact</strong> <span class="glyphicon glyphicon-question-sign"></span></h5>
+                <br>
+                <h5><strong>Overall experience</strong> <span class="glyphicon glyphicon-question-sign"></span></h5>
+                <br>
+                <h5><strong>Value for money</strong> <span class="glyphicon glyphicon-question-sign"></span></h5>
+            </div>
+            <div class="col-md-6" style="padding-left: 100px">
+                <br>
+                <h4><strong>Your comment</strong></h4>
+                <br>
+                <h5 class="carlsberg-sans-light-darkgeen"><strong>YOUR NAME</strong></h5>
+                <h6 class="carlsberg-sans-light-darkgeen">Ivan Ivanov</h6>
+                <br>
+                <div class="form-group">
+                    <label for="sbj" class="carlsberg-sans-light-darkgeen"><strong>SUBJECT</strong></label>
+                    <input class="form-control" id="sbj" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label for="comment" class="carlsberg-sans-light-darkgeen"><strong>COMMENT<span class="color-red">*</span></strong></label>
+                    <textarea class="form-control" rows="6" id="comment"></textarea>
+                </div>
+                <button type="button" class="btn btn-info" style="float: right;">Save</button>
+            </div>
+        </div>
+        <br>
+    </div>
+    <!-- Images slide po-up -->
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="mySlides">
+                <div class="numbertext">1 / 2</div>
+                <img src="Content/images/main_image250x250.jpg" class="img-responsive" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">2 / 2</div>
+                <img src="Content/images/second_image250x250.jpg" class="img-responsive" style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+</div>
+<script>
+    // Get the tab element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>
